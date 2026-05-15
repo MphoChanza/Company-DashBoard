@@ -1,0 +1,737 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Analytics - Company Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <base target="_blank">
+</head>
+<body>
+    <button class="mobile-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-cube"></i>
+                <span>Nexus</span>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a class="nav-link active" onclick="showSection('overview')">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Overview</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('analytics')">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('projects')">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('team')">
+                    <i class="fas fa-users"></i>
+                    <span>Team</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('finance')">
+                    <i class="fas fa-wallet"></i>
+                    <span>Finance</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('sales')">
+                    <i class="fas fa-handshake"></i>
+                    <span>Sales</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('settings')">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-header">
+            <div class="search-bar">
+                <i class="fas fa-search" style="color: var(--text-muted);"></i>
+                <input type="text" placeholder="Search anything...">
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-envelope"></i>
+                    <span class="badge">5</span>
+                </button>
+                <div class="user-profile">
+                    <div class="user-avatar">JD</div>
+                    <div class="user-info">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-role">CEO</div>
+                    </div>
+                    <i class="fas fa-chevron-down" style="color: var(--text-muted); font-size: 12px;"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="page-header">
+                <h1 class="page-title">Dashboard Overview</h1>
+                <p class="page-subtitle">Welcome back! Here's what's happening with your business today.</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card animate-in delay-1">
+                    <div class="stat-header">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-trend trend-up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>12.5%</span>
+                        </div>
+                    </div>
+                    <div class="stat-value">$1,209,487</div>
+                    <div class="stat-label">Total Revenue (YTD)</div>
+                </div>
+
+                <div class="stat-card animate-in delay-2">
+                    <div class="stat-header">
+                        <div class="stat-icon green">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-trend trend-up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>8.2%</span>
+                        </div>
+                    </div>
+                    <div class="stat-value">$409,651</div>
+                    <div class="stat-label">Net Profit (YTD)</div>
+                </div>
+
+                <div class="stat-card animate-in delay-3">
+                    <div class="stat-header">
+                        <div class="stat-icon purple">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-trend trend-up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>4.1%</span>
+                        </div>
+                    </div>
+                    <div class="stat-value">69</div>
+                    <div class="stat-label">Total Employees</div>
+                </div>
+
+                <div class="stat-card animate-in delay-4">
+                    <div class="stat-header">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <div class="stat-trend trend-up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>0.3</span>
+                        </div>
+                    </div>
+                    <div class="stat-value">4.7/5.0</div>
+                    <div class="stat-label">Customer Satisfaction</div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="charts-grid">
+                <div class="chart-card animate-in">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Revenue vs Expenses</h3>
+                        <div class="chart-actions">
+                            <button class="chart-btn active">12M</button>
+                            <button class="chart-btn">6M</button>
+                            <button class="chart-btn">30D</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card animate-in">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Sales Pipeline</h3>
+                    </div>
+                    <div class="pipeline-container">
+                        <div class="pipeline-item">
+                            <span style="min-width: 90px; font-size: 14px; font-weight: 500;">Lead</span>
+                            <div class="pipeline-bar-bg">
+                                <div class="pipeline-bar-fill" style="width: 66.17647058823529%; background: #6366f1;">
+                                    85 deals
+                                </div>
+                            </div>
+                            <span class="pipeline-value">$450,000</span>
+                        </div>
+                        <div class="pipeline-item">
+                            <span style="min-width: 90px; font-size: 14px; font-weight: 500;">Qualified</span>
+                            <div class="pipeline-bar-bg">
+                                <div class="pipeline-bar-fill" style="width: 47.05882352941176%; background: #8b5cf6;">
+                                    42 deals
+                                </div>
+                            </div>
+                            <span class="pipeline-value">$320,000</span>
+                        </div>
+                        <div class="pipeline-item">
+                            <span style="min-width: 90px; font-size: 14px; font-weight: 500;">Proposal</span>
+                            <div class="pipeline-bar-bg">
+                                <div class="pipeline-bar-fill" style="width: 27.205882352941174%; background: #ec4899;">
+                                    18 deals
+                                </div>
+                            </div>
+                            <span class="pipeline-value">$185,000</span>
+                        </div>
+                        <div class="pipeline-item">
+                            <span style="min-width: 90px; font-size: 14px; font-weight: 500;">Negotiation</span>
+                            <div class="pipeline-bar-bg">
+                                <div class="pipeline-bar-fill" style="width: 17.647058823529413%; background: #f43f5e;">
+                                    8 deals
+                                </div>
+                            </div>
+                            <span class="pipeline-value">$120,000</span>
+                        </div>
+                        <div class="pipeline-item">
+                            <span style="min-width: 90px; font-size: 14px; font-weight: 500;">Closed Won</span>
+                            <div class="pipeline-bar-bg">
+                                <div class="pipeline-bar-fill" style="width: 100.0%; background: #10b981;">
+                                    24 deals
+                                </div>
+                            </div>
+                            <span class="pipeline-value">$680,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects & Activity -->
+            <div class="progress-grid">
+                <div class="chart-card animate-in">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Active Projects</h3>
+                        <button class="chart-btn">View All</button>
+                    </div>
+                    <div class="progress-list">
+                        <div class="progress-item">
+                            <div class="progress-ring">
+                                <svg width="56" height="56">
+                                    <circle class="progress-ring-bg" cx="28" cy="28" r="24"/>
+                                    <circle class="progress-ring-fill" cx="28" cy="28" r="24" 
+                                        stroke="url(#gradCloudMigration)" 
+                                        stroke-dasharray="150.79631999999998" 
+                                        stroke-dashoffset="33.17519039999999"/>
+                                    <defs>
+                                        <linearGradient id="gradCloudMigration" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#6366f1"/>
+                                            <stop offset="100%" style="stop-color:#8b5cf6"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <span class="progress-text">78%</span>
+                            </div>
+                            <div class="progress-info">
+                                <div class="progress-name">Cloud Migration</div>
+                                <div class="progress-meta">12 members &bull; $185,000 / $250,000</div>
+                            </div>
+                            <span class="progress-status status-ontrack">On Track</span>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-ring">
+                                <svg width="56" height="56">
+                                    <circle class="progress-ring-bg" cx="28" cy="28" r="24"/>
+                                    <circle class="progress-ring-fill" cx="28" cy="28" r="24" 
+                                        stroke="url(#gradMobileAppv2.0)" 
+                                        stroke-dasharray="150.79631999999998" 
+                                        stroke-dashoffset="82.93797599999999"/>
+                                    <defs>
+                                        <linearGradient id="gradMobileAppv2.0" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#6366f1"/>
+                                            <stop offset="100%" style="stop-color:#8b5cf6"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <span class="progress-text">45%</span>
+                            </div>
+                            <div class="progress-info">
+                                <div class="progress-name">Mobile App v2.0</div>
+                                <div class="progress-meta">8 members &bull; $95,000 / $180,000</div>
+                            </div>
+                            <span class="progress-status status-atrisk">At Risk</span>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-ring">
+                                <svg width="56" height="56">
+                                    <circle class="progress-ring-bg" cx="28" cy="28" r="24"/>
+                                    <circle class="progress-ring-fill" cx="28" cy="28" r="24" 
+                                        stroke="url(#gradAIAnalyticsPlatform)" 
+                                        stroke-dasharray="150.79631999999998" 
+                                        stroke-dashoffset="12.063705599999992"/>
+                                    <defs>
+                                        <linearGradient id="gradAIAnalyticsPlatform" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#6366f1"/>
+                                            <stop offset="100%" style="stop-color:#8b5cf6"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <span class="progress-text">92%</span>
+                            </div>
+                            <div class="progress-info">
+                                <div class="progress-name">AI Analytics Platform</div>
+                                <div class="progress-meta">15 members &bull; $290,000 / $320,000</div>
+                            </div>
+                            <span class="progress-status status-ontrack">On Track</span>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-ring">
+                                <svg width="56" height="56">
+                                    <circle class="progress-ring-bg" cx="28" cy="28" r="24"/>
+                                    <circle class="progress-ring-fill" cx="28" cy="28" r="24" 
+                                        stroke="url(#gradSecurityOverhaul)" 
+                                        stroke-dasharray="150.79631999999998" 
+                                        stroke-dashoffset="105.557424"/>
+                                    <defs>
+                                        <linearGradient id="gradSecurityOverhaul" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#6366f1"/>
+                                            <stop offset="100%" style="stop-color:#8b5cf6"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <span class="progress-text">30%</span>
+                            </div>
+                            <div class="progress-info">
+                                <div class="progress-name">Security Overhaul</div>
+                                <div class="progress-meta">6 members &bull; $52,000 / $150,000</div>
+                            </div>
+                            <span class="progress-status status-delayed">Delayed</span>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-ring">
+                                <svg width="56" height="56">
+                                    <circle class="progress-ring-bg" cx="28" cy="28" r="24"/>
+                                    <circle class="progress-ring-fill" cx="28" cy="28" r="24" 
+                                        stroke="url(#gradCustomerPortal)" 
+                                        stroke-dasharray="150.79631999999998" 
+                                        stroke-dashoffset="52.778711999999985"/>
+                                    <defs>
+                                        <linearGradient id="gradCustomerPortal" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#6366f1"/>
+                                            <stop offset="100%" style="stop-color:#8b5cf6"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <span class="progress-text">65%</span>
+                            </div>
+                            <div class="progress-info">
+                                <div class="progress-name">Customer Portal</div>
+                                <div class="progress-meta">10 members &bull; $125,000 / $200,000</div>
+                            </div>
+                            <span class="progress-status status-ontrack">On Track</span>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-ring">
+                                <svg width="56" height="56">
+                                    <circle class="progress-ring-bg" cx="28" cy="28" r="24"/>
+                                    <circle class="progress-ring-fill" cx="28" cy="28" r="24" 
+                                        stroke="url(#gradDataWarehouse)" 
+                                        stroke-dasharray="150.79631999999998" 
+                                        stroke-dashoffset="18.095558399999987"/>
+                                    <defs>
+                                        <linearGradient id="gradDataWarehouse" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#6366f1"/>
+                                            <stop offset="100%" style="stop-color:#8b5cf6"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <span class="progress-text">88%</span>
+                            </div>
+                            <div class="progress-info">
+                                <div class="progress-name">Data Warehouse</div>
+                                <div class="progress-meta">9 members &bull; $235,000 / $275,000</div>
+                            </div>
+                            <span class="progress-status status-ontrack">On Track</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card animate-in">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Recent Activity</h3>
+                        <button class="chart-btn">View All</button>
+                    </div>
+                    <div class="activity-feed">
+                        <div class="activity-item">
+                            <div class="activity-dot dot-success"></div>
+                            <div class="activity-content">
+                                <div class="activity-text">
+                                    <strong>Alex Morgan</strong> closed deal <span>Acme Corp - $45K</span>
+                                </div>
+                                <div class="activity-time">2 min ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot dot-info"></div>
+                            <div class="activity-content">
+                                <div class="activity-text">
+                                    <strong>Jordan Lee</strong> updated project <span>Cloud Migration</span>
+                                </div>
+                                <div class="activity-time">15 min ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot dot-success"></div>
+                            <div class="activity-content">
+                                <div class="activity-text">
+                                    <strong>Taylor Chen</strong> hired new <span>Senior Developer</span>
+                                </div>
+                                <div class="activity-time">32 min ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot dot-warning"></div>
+                            <div class="activity-content">
+                                <div class="activity-text">
+                                    <strong>Casey Park</strong> alert: budget <span>Marketing Q3</span>
+                                </div>
+                                <div class="activity-time">1 hour ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot dot-success"></div>
+                            <div class="activity-content">
+                                <div class="activity-text">
+                                    <strong>Riley Kim</strong> completed <span>Security Audit</span>
+                                </div>
+                                <div class="activity-time">2 hours ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot dot-info"></div>
+                            <div class="activity-content">
+                                <div class="activity-text">
+                                    <strong>Quinn Adams</strong> submitted proposal <span>TechStart Inc</span>
+                                </div>
+                                <div class="activity-time">3 hours ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot dot-info"></div>
+                            <div class="activity-content">
+                                <div class="activity-text">
+                                    <strong>Avery Brooks</strong> meeting scheduled <span>Board Review</span>
+                                </div>
+                                <div class="activity-time">5 hours ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department Budget -->
+            <div class="chart-card animate-in" style="margin-bottom: 28px;">
+                <div class="chart-header">
+                    <h3 class="chart-title">Department Budget Utilization</h3>
+                </div>
+                <div class="dept-grid">
+                    <div class="dept-card">
+                        <div class="dept-name">Sales</div>
+                        <div class="dept-bar">
+                            <div class="dept-bar-fill" style="width: 76.0%; background: #6366f1;"></div>
+                        </div>
+                        <div class="dept-stats">
+                            <span class="dept-spent">$91,211 / $120,000</span>
+                            <span class="dept-pct" style="color: #6366f1;">76.0%</span>
+                        </div>
+                    </div>
+                    <div class="dept-card">
+                        <div class="dept-name">Marketing</div>
+                        <div class="dept-bar">
+                            <div class="dept-bar-fill" style="width: 95.1%; background: #8b5cf6;"></div>
+                        </div>
+                        <div class="dept-stats">
+                            <span class="dept-spent">$80,828 / $85,000</span>
+                            <span class="dept-pct" style="color: #8b5cf6;">95.1%</span>
+                        </div>
+                    </div>
+                    <div class="dept-card">
+                        <div class="dept-name">Engineering</div>
+                        <div class="dept-bar">
+                            <div class="dept-bar-fill" style="width: 86.6%; background: #ec4899;"></div>
+                        </div>
+                        <div class="dept-stats">
+                            <span class="dept-spent">$129,917 / $150,000</span>
+                            <span class="dept-pct" style="color: #ec4899;">86.6%</span>
+                        </div>
+                    </div>
+                    <div class="dept-card">
+                        <div class="dept-name">HR</div>
+                        <div class="dept-bar">
+                            <div class="dept-bar-fill" style="width: 85.5%; background: #f43f5e;"></div>
+                        </div>
+                        <div class="dept-stats">
+                            <span class="dept-spent">$38,489 / $45,000</span>
+                            <span class="dept-pct" style="color: #f43f5e;">85.5%</span>
+                        </div>
+                    </div>
+                    <div class="dept-card">
+                        <div class="dept-name">Operations</div>
+                        <div class="dept-bar">
+                            <div class="dept-bar-fill" style="width: 92.8%; background: #f59e0b;"></div>
+                        </div>
+                        <div class="dept-stats">
+                            <span class="dept-spent">$88,150 / $95,000</span>
+                            <span class="dept-pct" style="color: #f59e0b;">92.8%</span>
+                        </div>
+                    </div>
+                    <div class="dept-card">
+                        <div class="dept-name">Finance</div>
+                        <div class="dept-bar">
+                            <div class="dept-bar-fill" style="width: 87.7%; background: #10b981;"></div>
+                        </div>
+                        <div class="dept-stats">
+                            <span class="dept-spent">$52,635 / $60,000</span>
+                            <span class="dept-pct" style="color: #10b981;">87.7%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Employee Table -->
+            <div class="chart-card animate-in">
+                <div class="chart-header">
+                    <h3 class="chart-title">Team Members</h3>
+                    <div class="chart-actions">
+                        <button class="chart-btn"><i class="fas fa-filter"></i> Filter</button>
+                        <button class="chart-btn"><i class="fas fa-download"></i> Export</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Role</th>
+                                <th>Department</th>
+                                <th>Status</th>
+                                <th>Performance</th>
+                                <th>Salary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="emp-cell">
+                                        <div class="emp-avatar">QG</div>
+                                        <div>
+                                            <div class="emp-name">Quinn Gonzalez</div>
+                                            <div class="emp-dept">EMP1001</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Product Manager</td>
+                                <td>HR</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td>
+                                    <div class="performance-bar">
+                                        <div class="perf-track">
+                                            <div class="perf-fill" style="width: 97%"></div>
+                                        </div>
+                                        <span>97%</span>
+                                    </div>
+                                </td>
+                                <td>$139,446</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="emp-cell">
+                                        <div class="emp-avatar">EJ</div>
+                                        <div>
+                                            <div class="emp-name">Emerson Jones</div>
+                                            <div class="emp-dept">EMP1002</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Marketing Specialist</td>
+                                <td>Sales</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td>
+                                    <div class="performance-bar">
+                                        <div class="perf-track">
+                                            <div class="perf-fill" style="width: 72%"></div>
+                                        </div>
+                                        <span>72%</span>
+                                    </div>
+                                </td>
+                                <td>$98,679</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="emp-cell">
+                                        <div class="emp-avatar">HT</div>
+                                        <div>
+                                            <div class="emp-name">Hayden Taylor</div>
+                                            <div class="emp-dept">EMP1003</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Designer</td>
+                                <td>Operations</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td>
+                                    <div class="performance-bar">
+                                        <div class="perf-track">
+                                            <div class="perf-fill" style="width: 81%"></div>
+                                        </div>
+                                        <span>81%</span>
+                                    </div>
+                                </td>
+                                <td>$120,504</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="emp-cell">
+                                        <div class="emp-avatar">DB</div>
+                                        <div>
+                                            <div class="emp-name">Dakota Brown</div>
+                                            <div class="emp-dept">EMP1004</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Product Manager</td>
+                                <td>Marketing</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td>
+                                    <div class="performance-bar">
+                                        <div class="perf-track">
+                                            <div class="perf-fill" style="width: 84%"></div>
+                                        </div>
+                                        <span>84%</span>
+                                    </div>
+                                </td>
+                                <td>$77,557</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="emp-cell">
+                                        <div class="emp-avatar">DM</div>
+                                        <div>
+                                            <div class="emp-name">Dakota Martinez</div>
+                                            <div class="emp-dept">EMP1005</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Designer</td>
+                                <td>Operations</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td>
+                                    <div class="performance-bar">
+                                        <div class="perf-track">
+                                            <div class="perf-fill" style="width: 87%"></div>
+                                        </div>
+                                        <span>87%</span>
+                                    </div>
+                                </td>
+                                <td>$86,578</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="emp-cell">
+                                        <div class="emp-avatar">RS</div>
+                                        <div>
+                                            <div class="emp-name">Riley Smith</div>
+                                            <div class="emp-dept">EMP1006</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Marketing Specialist</td>
+                                <td>Sales</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td>
+                                    <div class="performance-bar">
+                                        <div class="perf-track">
+                                            <div class="perf-fill" style="width: 80%"></div>
+                                        </div>
+                                        <span>80%</span>
+                                    </div>
+                                </td>
+                                <td>$59,103</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="emp-cell">
+                                        <div class="emp-avatar">HJ</div>
+                                        <div>
+                                            <div class="emp-name">Hayden Jackson</div>
+                                            <div class="emp-dept">EMP1007</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Marketing Specialist</td>
+                                <td>Sales</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td>
+                                    <div class="performance-bar">
+                                        <div class="perf-track">
+                                            <div class="perf-fill" style="width: 98%"></div>
+                                        </div>
+                                        <span>98%</span>
+                                    </div>
+                                </td>
+                                <td>$86,811</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="emp-cell">
+                                        <div class="emp-avatar">AM</div>
+                                        <div>
+                                            <div class="emp-name">Avery Moore</div>
+                                            <div class="emp-dept">EMP1008</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Marketing Specialist</td>
+                                <td>Sales</td>
+                                <td><span class="status-badge badge-active">Active</span></td>
+                                <td>
+                                    <div class="performance-bar">
+                                        <div class="perf-track">
+                                            <div class="perf-fill" style="width: 91%"></div>
+                                        </div>
+                                        <span>91%</span>
+                                    </div>
+                                </td>
+                                <td>$77,583</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
